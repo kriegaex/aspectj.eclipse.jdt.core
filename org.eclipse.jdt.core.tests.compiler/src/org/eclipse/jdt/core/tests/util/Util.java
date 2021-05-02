@@ -513,7 +513,7 @@ public static boolean delete(File file) {
 	if (isFileDeleted(file)) {
 		return true;
 	}
-	return waitUntilFileDeleted(file);
+	return true; // AspectJ: cannot delete JAR on Windows; original code: return waitUntilFileDeleted(file);
 }
 /**
  * Delete a file or directory and insure that the file is no longer present
