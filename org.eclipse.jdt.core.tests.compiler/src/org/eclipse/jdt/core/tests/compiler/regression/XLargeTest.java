@@ -1402,9 +1402,7 @@ public void test005() {
  * http://dev.eclipse.org/bugs/show_bug.cgi?id=26129
  */
 public void test006() {
-	this.runConformTest(
-		new String[] {
-			"A.java",
+	String s =
 			"public class A {" + // $NON-NLS-1$
 			"    public static void main(String[] args) {" + // $NON-NLS-1$
 			"        int i = 1;" + // $NON-NLS-1$
@@ -1588,6 +1586,11 @@ public void test006() {
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
+			"";
+	this.runConformTest(
+		new String[] {
+			"A.java",
+			s +
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
 			"        	i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;i = 366 * i % 534;" + // $NON-NLS-1$
@@ -2650,10 +2653,7 @@ public void test008() {
 }
 //https://bugs.eclipse.org/bugs/show_bug.cgi?id=126744
 public void test009() {
-	runConformTest(
-		true,
-		new String[] {
-			"X.java",
+	String s =
 			"public class X {\n" +
 			"    public static String CONSTANT = \n" +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
@@ -3155,6 +3155,12 @@ public void test009() {
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
+			"";
+	runConformTest(
+		true,
+		new String[] {
+			"X.java",
+			s +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
 			"    	\"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\" +\n" +
@@ -3918,10 +3924,7 @@ public void test014() {
 public void test015() {
 	Map settings = getCompilerOptions();
 	settings.put(CompilerOptions.OPTION_ShareCommonFinallyBlocks, CompilerOptions.ENABLED);
-	runConformTest(
-		true,
-		new String[] {
-		"X.java",
+	String s =
 		"public class X {\n" +
 		"	public static int foo(int i) {\n" +
 		"		try {\n" +
@@ -7957,6 +7960,12 @@ public void test015() {
 		"				case 2014 :\n" +
 		"					return 3;\n" +
 		"				case 2015 :\n" +
+		"";
+	runConformTest(
+		true,
+		new String[] {
+		"X.java",
+			s +
 		"					return 3;\n" +
 		"				case 2016 :\n" +
 		"					return 3;\n" +

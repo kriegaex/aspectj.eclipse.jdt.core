@@ -2658,9 +2658,7 @@ public class StackMapAttributeTest extends AbstractRegressionTest {
 
 	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=236336
 	public void test037() {
-		this.runConformTest(
-			new String[] {
-				"X.java",
+		String s1 =
 				"public class X {\n" +
 				"	public static void main(String[] args) {\n" +
 				"		System.out.print(\"SUCCESS\");\n" +
@@ -4342,6 +4340,11 @@ public class StackMapAttributeTest extends AbstractRegressionTest {
 				"					System.out.println(methodName + i);\n" +
 				"				break;\n" +
 				"				case 550 :\n" +
+				"";
+		this.runConformTest(
+			new String[] {
+				"X.java",
+				s1 +
 				"					System.out.println(methodName + i);\n" +
 				"				break;\n" +
 				"				case 551 :\n" +
