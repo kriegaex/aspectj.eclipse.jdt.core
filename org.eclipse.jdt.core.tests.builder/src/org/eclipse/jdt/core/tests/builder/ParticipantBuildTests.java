@@ -76,6 +76,10 @@ public class ParticipantBuildTests extends BuilderTests {
 		public void setSourceEnd(int sourceEnd) {/* not needed */}
 		public void setSourceLineNumber(int lineNumber)  {/* not needed */}
 		public void setSourceStart(int sourceStart) {/* not needed */}
+		public void setSeeAlsoProblems(IProblem[] iProblems) {}
+		public IProblem[] seeAlso() { return new IProblem[0]; }
+		public void setSupplementaryMessageInfo(String s) {}
+		public String getSupplementaryMessageInfo() { return null; }
 		public int getCategoryID() { return 0; }
 		public String getMarkerType() { return "org.eclipse.jdt.core.tests.compile.problem"; }
 	}

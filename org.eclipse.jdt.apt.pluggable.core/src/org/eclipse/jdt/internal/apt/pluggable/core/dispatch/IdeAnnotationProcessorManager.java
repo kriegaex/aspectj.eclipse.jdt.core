@@ -138,4 +138,11 @@ public class IdeAnnotationProcessorManager extends BaseAnnotationProcessorManage
 			super.processAnnotations(units, referenceBindings, isLastRound);
 		}
 	}
+
+	// AspectJ Extension
+	@Override
+	protected void closeClassLoader() {
+		// Not used here 
+	}
+	// End AspectJ Extension
 }

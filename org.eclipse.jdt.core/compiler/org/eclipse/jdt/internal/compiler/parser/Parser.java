@@ -43,6 +43,56 @@ public class Parser extends TheOriginalJDTParserClass {
 			throw new ExceptionInInitializerError(ex.getMessage());
 		} catch (ClassNotFoundException ex) {
 			System.err.println("Warning: AspectJ declaration factory class not found on classpath");
+
+			// TODO: This should depend on a condition and only happen when running JDT Core upstream tests
+			System.err.println("Using dummy class...");
+			declarationFactory = new IDeclarationFactory() {
+
+				// The following methods do something meaningful in order to make the compatible with upstream JDT Core
+				@Override
+				public MethodDeclaration createMethodDeclaration(CompilationResult result) {
+					return new MethodDeclaration(result);
+				}
+
+				@Override
+				public ConstructorDeclaration createConstructorDeclaration(CompilationResult result) {
+					return new ConstructorDeclaration(result);
+				}
+
+				// All of the following methods are just dummies
+				@Override public MessageSend createProceed(MessageSend m) { return null; }
+				@Override public TypeDeclaration createAspect(CompilationResult result) { return null; }
+				@Override public void setPrivileged(TypeDeclaration aspectDecl, boolean isPrivileged) { }
+				@Override public void setPerClauseFrom(TypeDeclaration aspectDecl, ASTNode pseudoTokens, Parser parser) { }
+				@Override public void setDominatesPatternFrom(TypeDeclaration aspectDecl, ASTNode pseudoTokens, Parser parser) { }
+				@Override public ASTNode createPseudoTokensFrom(ASTNode[] tokens, CompilationResult result) {return null; }
+				@Override public MethodDeclaration createPointcutDeclaration(CompilationResult result) { return null; }
+				@Override public MethodDeclaration createAroundAdviceDeclaration(CompilationResult result) { return null; }
+				@Override public MethodDeclaration createAfterAdviceDeclaration(CompilationResult result) { return null; }
+				@Override public MethodDeclaration createBeforeAdviceDeclaration(CompilationResult result) { return null; }
+				@Override public ASTNode createPointcutDesignator(Parser parser, ASTNode pseudoTokens) { return null; }
+				@Override public void setPointcutDesignatorOnAdvice(MethodDeclaration adviceDecl, ASTNode des) { }
+				@Override public void setPointcutDesignatorOnPointcut(MethodDeclaration adviceDecl, ASTNode des) { }
+				@Override public void setExtraArgument(MethodDeclaration adviceDeclaration, Argument arg) { }
+				@Override public boolean isAfterAdvice(MethodDeclaration adviceDecl) { return false; }
+				@Override public void setAfterThrowingAdviceKind(MethodDeclaration adviceDecl) { }
+				@Override public void setAfterReturningAdviceKind(MethodDeclaration adviceDecl) { }
+				@Override public MethodDeclaration createDeclareDeclaration(CompilationResult result, ASTNode pseudoTokens, Parser parser) { return null; }
+				@Override public MethodDeclaration createDeclareAnnotationDeclaration(CompilationResult result, ASTNode pseudoTokens, Annotation annotation, Parser parser, char kind) { return null; }
+				@Override public MethodDeclaration createInterTypeFieldDeclaration(CompilationResult result, TypeReference onType) { return null; }
+				@Override public MethodDeclaration createInterTypeMethodDeclaration(CompilationResult result) { return null; }
+				@Override public MethodDeclaration createInterTypeConstructorDeclaration(CompilationResult result) { return null; }
+				@Override public void setSelector(MethodDeclaration interTypeDecl, char[] selector) { }
+				@Override public void setDeclaredModifiers(MethodDeclaration interTypeDecl, int modifiers) { }
+				@Override public void setInitialization(MethodDeclaration itdFieldDecl, Expression initialization) { }
+				@Override public void setOnType(MethodDeclaration interTypeDecl, TypeReference onType) { }
+				@Override public ASTNode createPseudoToken(Parser parser, String value, boolean isIdentifier) { return null; }
+				@Override public ASTNode createIfPseudoToken(Parser parser, Expression expr) { return null; }
+				@Override public void setLiteralKind(ASTNode pseudoToken, String string) { }
+				@Override public boolean shouldTryToRecover(ASTNode node) { return false; }
+				@Override public TypeDeclaration createIntertypeMemberClassDeclaration(CompilationResult compilationResult) { return null; }
+				@Override public void setOnType(TypeDeclaration interTypeDecl, TypeReference onType) { }
+			};
 			//throw new ExceptionInInitializerError(ex.getMessage());
 		}
 	}

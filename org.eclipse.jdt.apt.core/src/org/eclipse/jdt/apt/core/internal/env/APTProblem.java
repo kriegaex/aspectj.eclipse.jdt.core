@@ -18,6 +18,7 @@ import org.eclipse.jdt.apt.core.internal.AptPlugin;
 import org.eclipse.jdt.apt.core.internal.env.MessagerImpl.Severity;
 import org.eclipse.jdt.apt.core.util.EclipseMessager;
 import org.eclipse.jdt.core.compiler.CategorizedProblem;
+import org.eclipse.jdt.core.compiler.IProblem;
 
 class APTProblem extends CategorizedProblem
 {
@@ -29,9 +30,10 @@ class APTProblem extends CategorizedProblem
 	private IFile _resource;
 	private final String _message;
 	private final String _markerType;
-
 	// May be null
 	private final String[] _arguments;
+	private IProblem[] _seeAlsoProblems;
+	private String _supplementaryMessageInfo;
 
 	APTProblem(final String msg,
 			   final Severity severity,
@@ -95,6 +97,26 @@ class APTProblem extends CategorizedProblem
 	@Override
 	public void setSourceStart(int sourceStart) {
 		_startingOffset = sourceStart;
+	}
+
+	@Override
+	public void setSeeAlsoProblems(IProblem[] problems) {
+		_seeAlsoProblems = problems;
+	}
+
+	@Override
+	public IProblem[] seeAlso() {
+		return _seeAlsoProblems;
+	}
+
+	@Override
+	public void setSupplementaryMessageInfo(String msg) {
+		_supplementaryMessageInfo = msg;
+	}
+
+	@Override
+	public String getSupplementaryMessageInfo() {
+		return _supplementaryMessageInfo;
 	}
 
 	@Override

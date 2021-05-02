@@ -3552,6 +3552,11 @@ protected void runNegativeTest(boolean skipJavac, JavacTestOptions javacTestOpti
 		}
 
 		@Override
+		protected void closeClassLoader() {
+			// Nothing to do here
+		}
+
+		@Override
 		public void configure(Object batchCompiler, String[] options) {
 			this._processingEnv = new DummyEnvironmentImpl((Compiler) batchCompiler);
 		}
