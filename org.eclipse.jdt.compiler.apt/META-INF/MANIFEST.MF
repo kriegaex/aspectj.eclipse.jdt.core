@@ -11,5 +11,6 @@ Export-Package: org.eclipse.jdt.internal.compiler.apt.dispatch;x-friends:="org.e
  org.eclipse.jdt.internal.compiler.apt.model;x-friends:="org.eclipse.jdt.apt.pluggable.core",
  org.eclipse.jdt.internal.compiler.apt.util;x-friends:="org.eclipse.jdt.apt.pluggable.core",
  org.eclipse.jdt.internal.compiler.lookup;x-friends:="org.eclipse.jdt.apt.pluggable.core"
-Import-Package: org.eclipse.jdt.internal.compiler.tool;resolution:=optional
+Import-Package: org.eclipse.jdt.internal.compiler.tool;resolution:=optional,
+ org.eclipse.jdt.internal.compiler
 Automatic-Module-Name: org.eclipse.jdt.compiler.apt
